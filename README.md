@@ -217,9 +217,27 @@ Query OK, 0 rows affected (0.02 sec)
 
 4.1 将表1的SELECT, INSERT, UPDATE(ename)权限赋给该账号。
 
+```
 
+mysql>  GRANT SELECT,INSERT,UPDATE ON *.*
+    -> TO 'lizhitong'@'localhost';
+Query OK, 0 rows affected (0.00 sec)
+
+```
 
 4.2 显示该账号权限
+
+```
+
+mysql> SHOW GRANTS FOR 'lizhitong'@'localhost';
++----------------------------------------------------------------+
+| Grants for lizhitong@localhost                                 |
++----------------------------------------------------------------+
+| GRANT SELECT, INSERT, UPDATE ON *.* TO 'lizhitong'@'localhost' |
++----------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+```
 
 
 
