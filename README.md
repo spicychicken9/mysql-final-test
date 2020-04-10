@@ -119,6 +119,20 @@ Query OK, 1 row affected (0.00 sec)
 
 3.2 表中入职时间（Hiredate字段）最短的人。
 
+SQL语句：SELECT ename，MAX（Hiredate） FROM t_b2
+
+```
+
+mysql> SELECT ename,max(Hiredate) FROM t_b2;
++-------+---------------+
+| ename | max(Hiredate) |
++-------+---------------+
+| SMITH | 1999-01-26    |
++-------+---------------+
+1 row in set (0.00 sec)
+
+```
+
 
 
 3.3 有几种职位（job字段）？在关系代数中，本操作是什么运算？
@@ -128,9 +142,21 @@ CLERK SALESMAN MANAGER ANALYST PRESIDENT STUDENT共六种。
 
 3.4 将 MILLER 的 comm 增加 100； 然后，找到 comm 比 MILLER 低的人；
 
+SQL语句：UPDATE t_b2 SET comm = comm+100 WHERE ename='MILLER';
+
+```
+
+mysql> UPDATE t_b2 SET comm = comm+100 WHERE ename='MILLER';
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+```
 
 
-3.5 计算每个人的收入(ename, sal + comm)；计算总共有多少人；计算所有人的平均收入。 提示：计算时 NULL 要当做 0 处理； 
+
+3.5 计算每个人的收入(ename, sal + comm)；计算总共有多少人；计算所有人的平均收入。 提示：计算时 NULL 要当做 0 处理；
+
+
 
 
 
