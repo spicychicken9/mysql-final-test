@@ -145,7 +145,7 @@ mysql> SELECT ename,max(Hiredate) FROM t_b2;
 
 3.3 有几种职位（job字段）？在关系代数中，本操作是什么运算？
 
-六种。SQL语句：SELECT DISTINCT job FROM t_b2。关系代数中是，去除重复元组。
+六种。SQL语句：SELECT DISTINCT job FROM t_b2。关系代数中是，投影。
 
 ```
 
