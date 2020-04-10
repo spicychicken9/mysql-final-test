@@ -122,8 +122,7 @@ Query OK, 1 row affected (0.00 sec)
 
 
 3.3 有几种职位（job字段）？在关系代数中，本操作是什么运算？
-
-
+CLERK SALESMAN MANAGER ANALYST PRESIDENT STUDENT共六种。
 
 3.4 将 MILLER 的 comm 增加 100； 然后，找到 comm 比 MILLER 低的人；
 
@@ -138,10 +137,41 @@ Query OK, 1 row affected (0.00 sec)
 
 
 3.7 建立一个视图：每个人的empno, ename, job 和 loc。简述为什么要建立本视图。
+```
 
+mysql>  CREATE VIEW view_1
+    -> (s_empno,s_ename,s_job)
+    -> AS SELECT empno,ename,job
+    -> FROM t_b2;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> SELECT * FROM view_1;
++----------+-----------+-----------+
+| s_empno  | s_ename   | s_job     |
++----------+-----------+-----------+
+|     7369 | SMITH     | CLERK     |
+|     7499 | ALLEN     | SALESMAN  |
+|     7521 | WARD      | SALESMAN  |
+|     7566 | JONES     | MANAGER   |
+|     7654 | MARTIN    | SALESMAN  |
+|     7698 | BLAKE     | MANAGER   |
+|     7788 | SCOTT     | ANALYST   |
+|     7839 | KING      | PRESIDENT |
+|     7844 | TURNER    | SALESMAN  |
+|     7878 | ADAMS     | CLERK     |
+|     7900 | JAMES     | CLERK     |
+|     7902 | FORD      | ANALYST   |
+|     7934 | MILLER    | CLERK     |
+| 17061611 | lizhitong | STUDENT   |
++----------+-----------+-----------+
+14 rows in set (0.00 sec)
+
+```
 
 
 3.8 为表2增加一个约束：deptno字段需要在表1中存在；这称做什么完整性？
+
+
 
 
 
@@ -150,14 +180,25 @@ Query OK, 1 row affected (0.00 sec)
 
 
 3.10 将表2的 sal 字段改名为 salary
+```
 
+mysql> ALTER TABLE t_b2
+    -> CHANGE sal salary float;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
 
-
+```
 3.11 撰写一个函数 get_deptno_from_empno，输入 empno，输出对应的 deptno。 简述函数和存储过程有什么不同。
 
 
 
 4 建立一个新用户，账号为自己的姓名拼音，密码为自己的学号；
+
+```
+
+mysql> insert into mysql.user(Host,User,Password) values("localhost","lizhitong",password("17061611"));
+
+```
 
 
 
@@ -204,3 +245,5 @@ WITH GRANT OPTION 这个选项表示该用户可以将自己拥有的权限授�
 
 
 9 有哪些场景不适合用关系型数据库？为什么？
+
+图片，文件，二进制数据，短生命期数据，日志文件等。
