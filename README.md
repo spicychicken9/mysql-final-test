@@ -2,9 +2,9 @@
 
 2019-2020 mysql final test
 
-姓名：
+姓名：李志铜
 
-学号：
+学号：17061611
 
 说明1：考试为开卷，可以上网，自觉不要相互电话和QQ；
 
@@ -17,44 +17,105 @@
 
 1 打印当前时间（例如 2020-04-07 13:41:42），写出SQL语句和结果
 
+sql语句：select now（）
+
+结果：
+```
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2020-04-10 08:45:59 |
++---------------------+
+1 row in set (0.00 sec)
+
+```
+
+
 2 组合打印自己的姓名和学号
 
 (例如 张三+123456 或者 zhangsan+123456 显示需包含加号)，写出SQL语句和结果
 
 3 建立如下表1和表2，写出建表语句和插入语句。
 
+
+
 表1：其中deptno为主键
 ```
-deptno, deptno,    loc
-(10, "ACCOUNTING", "NEW YORK"),
-(20, "RESEARCH", "DALLAS"),
-(30, "SALES", "CHICAGO"),
-(40, "OPERATIONS", "BOSTON")
+
+mysql> CREATE TABLE t_b1(
+    -> deptno INT PRIMARY KEY,
+    -> dname VARCHAR(20),
+    -> loc VARCHAR(40)
+    -> );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> INSERT INTO t_b1 VALUES (10, "ACCOUNTING", "NEW YORK"),
+    -> (20, "RESEARCH", "DALLAS"),
+    -> (30, "SALES", "CHICAGO"),
+    -> (40, "OPERATIONS", "BOSTON");
+Query OK, 4 rows affected (0.00 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM t_b1;
++--------+------------+----------+
+| deptno | dname      | loc      |
++--------+------------+----------+
+|     10 | ACCOUNTING | NEW YORK |
+|     20 | RESEARCH   | DALLAS   |
+|     30 | SALES      | CHICAGO  |
+|     40 | OPERATIONS | BOSTON   |
++--------+------------+----------+
+4 rows in set (0.00 sec)
+
 ```
 
-表2：其中empno字段为主键
 ```
-        empno, ename,    job,    MGR,   Hiredate,    sal,   comm, deptno
-        (7369, "SMITH", "CLERK", 7902, "1981-03-12", 800.00, NULL, 20),
-	(7499, "ALLEN", "SALESMAN", 7698, "1982-03-12", 1600, 300, 30),
-	(7521, "WARD", "SALESMAN", 7698, "1838-03-12", 1250, 500, 30),
-	(7566, "JONES", "MANAGER", 7839, "1981-03-12", 2975, NULL, 20),
-	(7654, "MARTIN", "SALESMAN", 7698, "1981-01-12", 1250, 1400, 30),
-	(7698, "BLAKE", "MANAGER", 7839, "1985-03-12", 2450, NULL, 10),
-	(7788, "SCOTT", "ANALYST", 7566, "1981-03-12", 3000, NULL, 20),
-	(7839, "KING", "PRESIDENT", NULL, "1981-03-12", 5000, NULL, 10),
-	(7844, "TURNER", "SALESMAN", 7689, "1981-03-12", 1500, 0, 30),
-	(7878, "ADAMS", "CLERK", 7788, "1981-03-12", 1100, NULL,20),
-	(7900, "JAMES", "CLERK", 7698,"1981-03-12",  950, NULL, 30),
-	(7902, "FORD", "ANALYST", 7566, "1981-03-12", 3000, NULL, 20),
-	(7934, "MILLER", "CLERK", 7782, "1981-03-12", 1300, NULL, 10)
+
+
+mysql> drop table t_b2;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table t_b2(
+    -> empno INT  PRIMARY KEY,
+    -> ename VARCHAR(20),
+    -> job  VARCHAR(20),
+    -> MGR  INT,
+    -> Hiredate Date,
+    -> sal float,
+    -> comm float,
+    -> deptno INT
+    -> );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> INSERT INTO t_b2 VALUES (7369, "SMITH", "CLERK", 7902, "1981-03-12", 800.00, NULL, 20),
+    -> (7499, "ALLEN", "SALESMAN", 7698, "1982-03-12", 1600, 300, 30),
+    -> (7521, "WARD", "SALESMAN", 7698, "1838-03-12", 1250, 500, 30),
+    -> (7566, "JONES", "MANAGER", 7839, "1981-03-12", 2975, NULL, 20),
+    -> (7654, "MARTIN", "SALESMAN", 7698, "1981-01-12", 1250, 1400, 30),
+    -> (7698, "BLAKE", "MANAGER", 7839, "1985-03-12", 2450, NULL, 10),
+    -> (7788, "SCOTT", "ANALYST", 7566, "1981-03-12", 3000, NULL, 20),
+    -> (7839, "KING", "PRESIDENT", NULL, "1981-03-12", 5000, NULL, 10),
+    -> (7844, "TURNER", "SALESMAN", 7689, "1981-03-12", 1500, 0, 30),
+    -> (7878, "ADAMS", "CLERK", 7788, "1981-03-12", 1100, NULL,20),
+    -> (7900, "JAMES", "CLERK", 7698,"1981-03-12",  950, NULL, 30),
+    -> (7902, "FORD", "ANALYST", 7566, "1981-03-12", 3000, NULL, 20),
+    -> (7934, "MILLER", "CLERK", 7782, "1981-03-12", 1300, NULL, 10);
+Query OK, 13 rows affected (0.01 sec)
+Records: 13  Duplicates: 0  Warnings: 0
+
 ```
+
+
 
 3.1 表2 中再插入一条记录：
 
-`(你的学号，你的姓名或者拼音， “CLERK”, 7782, 你的生日,  NULL, NULL, 10)`
- 
-例如：`(12345,  "Zhangsan", "sTUDENT", 7782, "2000-03-12", NULL, NULL, 10)`
+```
+mysql> INSERT INTO t_b2 VALUES (17061611,"lizhitong","STUDENT",7782,"1999-01-26",NULL,NULL,10);
+Query OK, 1 row affected (0.00 sec)
+
+```
 
 3.2 表中入职时间（Hiredate字段）最短的人。
 
