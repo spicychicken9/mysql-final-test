@@ -37,6 +37,18 @@ mysql> select now();
 
 (例如 张三+123456 或者 zhangsan+123456 显示需包含加号)，写出SQL语句和结果
 
+```
+
+mysql> SELECT '李志铜+17061611';
++-----------------+
+| 李志铜+17061611 |
++-----------------+
+| 李志铜+17061611 |
++-----------------+
+1 row in set (0.00 sec)
+
+```
+
 3 建立如下表1和表2，写出建表语句和插入语句。
 
 
@@ -72,10 +84,6 @@ mysql> SELECT * FROM t_b1;
 ```
 
 ```
-
-
-mysql> drop table t_b2;
-Query OK, 0 rows affected (0.01 sec)
 
 mysql> create table t_b2(
     -> empno INT  PRIMARY KEY,
