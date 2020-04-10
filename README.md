@@ -122,6 +122,8 @@ Query OK, 1 row affected (0.00 sec)
 
 
 3.3 有几种职位（job字段）？在关系代数中，本操作是什么运算？
+
+
 CLERK SALESMAN MANAGER ANALYST PRESIDENT STUDENT共六种。
 
 3.4 将 MILLER 的 comm 增加 100； 然后，找到 comm 比 MILLER 低的人；
@@ -176,6 +178,15 @@ mysql> SELECT * FROM view_1;
 
 
 3.9 为表2增加一个索引：ename 字段。简述为什么要在 ename 字段建立索引
+```
+
+mysql> CREATE INDEX suoyin
+    -> ON t_b2 (ename);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+```
+
 
 
 
@@ -196,7 +207,9 @@ Records: 0  Duplicates: 0  Warnings: 0
 
 ```
 
-mysql> insert into mysql.user(Host,User,Password) values("localhost","lizhitong",password("17061611"));
+mysql> CREATE USER 'lizhitong'@'localhost'
+    -> IDENTIFIED BY '17061611';
+Query OK, 0 rows affected (0.02 sec)
 
 ```
 
